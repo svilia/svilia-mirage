@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #111; color: #ddd; }
+        .header { background: #222; padding: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #444; padding: 8px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ title }}</h1>
+        <p>Generated at: {{ generated_at }}</p>
+    </div>
+    <h2>Visitor Profile</h2>
+    <pre>{{ visitor | tojson }}</pre>
+    
+    <h2>Sessions ({{ sessions | length }})</h2>
+    <table>
+        <tr><th>ID</th><th>Duration</th></tr>
+        {% for session in sessions %}
+        <tr><td>{{ session.session_id }}</td><td>{{ session.session_duration }}</td></tr>
+        {% endfor %}
+    </table>
+    
+    <h2>Events</h2>
+    <p>Total: {{ total_events }}</p>
+</body>
+</html>
